@@ -1,0 +1,474 @@
+/* ─── Fraunces (variable, optical-sized — curved feminine editorial) ── */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Inter:wght@400;500;600&display=swap");
+
+/* ─── design tokens (v2 — warmer, softer, more editorial) ────────── */
+:root {
+  /* color
+     navy stays as primary anchor (Abbey's call). everything else
+     has been warmed: cream → ivory, coral → dusty rose, blush
+     supporting tone, brass for tiny ornaments. no mono accent. */
+  --ink:        #1a2c4f;   /* navy — slightly warmer than v1 */
+  --ink-soft:   #34456b;
+  --paper:      #faf3e8;   /* ivory-cream, warmer */
+  --paper-deep: #f1e6d3;
+  --rose:       #d97a6c;   /* dusty rose-coral */
+  --rose-deep:  #b35d50;
+  --blush:      #f4dcd6;   /* highlight tone */
+  --brass:      #b89160;   /* small ornaments only */
+  --gray:       #6f6555;
+  --gray-soft:  #a39681;
+  --rule:       #e3d6c0;
+
+  /* type — Fraunces does the heavy lifting (display + italic),
+     Inter is the workhorse body. drop mono entirely. */
+  --serif: "Fraunces", "Tiempos Headline", "GT Super", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* rhythm */
+  --measure: 60ch;
+  --gutter:  clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(4.5rem, 9vh, 8rem);
+
+  /* radii — softer than v1's hard corners */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 18px;
+  --r-pill: 999px;
+}
+
+/* ─── reset + base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 18px; -webkit-text-size-adjust: 100%; }
+@media (max-width: 640px) { html { font-size: 17px; } }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 80% -10%, rgba(244, 220, 214, 0.55), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 0% 100%, rgba(244, 220, 214, 0.4), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 0.5px; }
+a:hover { color: var(--rose-deep); text-decoration-color: var(--rose); }
+
+::selection { background: var(--blush); color: var(--ink); }
+
+/* ─── masthead (centered editorial wordmark) ─────────────────────── */
+.masthead {
+  text-align: center;
+  padding: 2.5rem var(--gutter) 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.masthead .wordmark {
+  font-family: var(--serif);
+  font-style: normal;
+  font-variation-settings: "opsz" 144, "SOFT" 60;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.6vw, 1.95rem);
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.masthead .wordmark .visibility { font-style: italic; font-weight: 400; letter-spacing: 0.05em; }
+.masthead .ornament {
+  margin: 0.6rem auto 0.9rem;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--brass);
+  position: relative;
+}
+.masthead .ornament::before,
+.masthead .ornament::after {
+  content: "·";
+  color: var(--brass);
+  position: absolute;
+  top: -0.7rem;
+  font-size: 1rem;
+}
+.masthead .ornament::before { left: -0.7rem; }
+.masthead .ornament::after { right: -0.7rem; }
+.masthead .tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  color: var(--gray);
+}
+.masthead nav {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+.masthead nav a {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+.masthead nav a:hover { color: var(--rose-deep); }
+
+/* ─── layout primitives ──────────────────────────────────────────── */
+.frame {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* sections no longer use full-width rules — asterism between them */
+section {
+  padding: var(--section-y) 0;
+  position: relative;
+}
+
+/* chapter break — single unbroken full-bleed blush rule, no band. */
+.chapter-break {
+  display: flex;
+  align-items: center;
+  padding: clamp(0.7rem, 1.5vw, 1rem) 0;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+.chapter-break__rule {
+  flex: 1;
+  height: 2px;
+  background: var(--blush);
+}
+
+/* chapter label — replaces v1 mono section number.
+   serif italic, brass-toned, small uppercase numeral. */
+.chapter {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--brass);
+  margin: 0 0 1.5rem;
+  letter-spacing: 0.04em;
+}
+.chapter .num {
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  margin-right: 0.5rem;
+  color: var(--rose-deep);
+}
+
+/* ─── type ───────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6.6vw, 5rem);
+  font-variation-settings: "opsz" 144, "SOFT" 80, "WONK" 1;
+  letter-spacing: -0.018em;
+  line-height: 1.02;
+  font-weight: 400;
+}
+h2 {
+  font-size: clamp(1.95rem, 3.6vw, 2.95rem);
+  font-variation-settings: "opsz" 96, "SOFT" 60;
+  letter-spacing: -0.012em;
+  line-height: 1.08;
+}
+h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+}
+
+p { margin: 0 0 1.1rem; max-width: var(--measure); }
+p.lede {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 36, "SOFT" 70;
+  font-size: clamp(1.18rem, 1.55vw, 1.4rem);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+strong { font-weight: 600; color: var(--ink); }
+em { font-style: italic; }
+
+/* dramatic display pull quote — full width, centered, large italic */
+.pullquote {
+  margin: 3rem auto;
+  padding: 0 1rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1;
+  font-size: clamp(1.7rem, 3.2vw, 2.45rem);
+  line-height: 1.2;
+  color: var(--rose-deep);
+  text-align: center;
+  max-width: 28ch;
+}
+
+/* marginalia — small note, can sit in margin on wide screens */
+.note {
+  margin-top: 0.75rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--gray);
+  max-width: 50ch;
+}
+.note::before { content: "❧  "; color: var(--rose); font-style: normal; }
+
+/* ─── components ─────────────────────────────────────────────────── */
+
+/* button — pill, softer */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  border-radius: var(--r-pill);
+  transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+}
+.btn:hover { background: var(--rose-deep); border-color: var(--rose-deep); color: var(--paper); transform: translateY(-1px); }
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: var(--paper); }
+
+/* hero */
+.hero {
+  padding-top: clamp(3.5rem, 8vh, 6rem);
+  padding-bottom: clamp(3.5rem, 8vh, 6rem);
+  text-align: center;
+}
+.hero .preface {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--rose-deep);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+.hero h1 { margin-left: auto; margin-right: auto; max-width: 18ch; }
+.hero h1 .accent {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1;
+  color: var(--rose-deep);
+}
+.hero .subhead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.55vw, 1.35rem);
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 1.5rem auto 0;
+  max-width: 38ch;
+}
+.hero .cta-row {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* pillars (§02) */
+.pillars { display: grid; gap: 0; margin-top: 2.5rem; }
+.pillar {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+}
+.pillar:first-child { border-top: none; padding-top: 0; }
+.pillar dt {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+  font-size: 1.3rem;
+  color: var(--rose-deep);
+  align-self: start;
+}
+.pillar dt .num {
+  display: block;
+  font-style: normal;
+  font-variant: small-caps;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  margin-bottom: 0.35rem;
+}
+.pillar dd { margin: 0; max-width: var(--measure); }
+@media (max-width: 640px) {
+  .pillar { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+/* two doors (§04) — full-bleed split, two distinct bg colors meeting
+   at center seam. digital-native zoning, not editorial spread. */
+.doors-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 3rem;
+  /* break out of any parent .frame to span viewport edges */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+.door {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  justify-content: center;
+  transition: background 200ms ease;
+}
+.door-inner {
+  width: 100%;
+  max-width: 36ch;
+}
+.door--agencies { background: var(--paper-deep); }
+.door--brands   { background: var(--blush); }
+.door--agencies:hover { background: #ebdec8; }
+.door--brands:hover   { background: #efd0c8; }
+
+.door .who {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--rose-deep);
+  margin-bottom: 0.85rem;
+}
+.door h3 { margin-bottom: 0.7rem; }
+.door .what { color: var(--ink-soft); margin-bottom: 1.25rem; }
+.door .includes {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  font-size: 0.94rem;
+}
+.door .includes li {
+  padding: 0.5rem 0;
+  color: var(--ink-soft);
+  position: relative;
+  padding-left: 1.1rem;
+}
+.door .includes li::before {
+  content: "❦";
+  color: var(--rose);
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  font-size: 0.7rem;
+}
+@media (max-width: 720px) {
+  .doors-split { grid-template-columns: 1fr; }
+}
+
+/* book module (§05) */
+.book-module {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-top: 1.75rem;
+}
+.book-cover {
+  display: block;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  box-shadow:
+    0 30px 60px -30px rgba(26, 44, 79, 0.5),
+    0 8px 18px -8px rgba(26, 44, 79, 0.25);
+  transform: rotate(-1.5deg);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.book-cover:hover {
+  transform: rotate(-0.5deg) translateY(-2px);
+  box-shadow:
+    0 36px 72px -28px rgba(26, 44, 79, 0.55),
+    0 10px 22px -10px rgba(26, 44, 79, 0.3);
+}
+.book-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+@media (max-width: 720px) {
+  .book-module { grid-template-columns: 1fr; }
+  .book-cover { max-width: 220px; transform: rotate(-1deg); }
+}
+
+/* about (§03) — career-arc strip, softer */
+.arc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.arc-item .role {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--rose-deep);
+  margin-bottom: 0.5rem;
+}
+.arc-item .role .num {
+  font-style: normal;
+  font-variant: small-caps;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  margin-right: 0.4rem;
+}
+.arc-item p { font-size: 0.94rem; color: var(--ink-soft); }
+@media (max-width: 640px) {
+  .arc { grid-template-columns: 1fr; }
+}
+
+/* footer / colophon */
+.colophon {
+  padding: 3.5rem var(--gutter) 4rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--gray);
+  text-align: center;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+}
+.colophon .heart { color: var(--rose); margin: 0 0.4rem; font-style: normal; }
+.colophon .meta {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--gray-soft);
+}
+.colophon a { color: var(--gray); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 0.5px; }
+.colophon a:hover { color: var(--rose-deep); }
