@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+
+    <header class="topnav">
+      <a class="topnav__brand" href="/">
+        CTP <span class="visibility">Visibility</span> Advisors
+      </a>
+      <nav class="topnav__links">
+        <a href="/services">Services</a>
+        <a href="/check">The Check</a>
+        <a href="/#book">Book</a>
+        <a href="/#about">About</a>
+        <a class="btn btn--small" href="/#close">Talk</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="colophon">
+      <p>
+        This site was built to be read by humans, AI assistants,
+        <span class="heart">♥</span> and Abby's mom.
+      </p>
+      <p class="meta">
+        <a href="/llms.txt">llms.txt</a>
+        &nbsp;·&nbsp;
+        <a href="/sitemap.xml">sitemap</a>
+        &nbsp;·&nbsp;
+        Chicago, IL
+        &nbsp;·&nbsp;
+        © 2026 CTP Visibility Advisors
+      </p>
+    </footer>
+
+  </body>
+</html>

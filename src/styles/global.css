@@ -62,62 +62,58 @@ a:hover { color: var(--rose-deep); text-decoration-color: var(--rose); }
 
 ::selection { background: var(--blush); color: var(--ink); }
 
-/* ─── masthead (centered editorial wordmark) ─────────────────────── */
-.masthead {
-  text-align: center;
-  padding: 2.5rem var(--gutter) 1.75rem;
+/* ─── topnav (traditional left-brand / right-nav, sticky) ────────── */
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1.25rem, 4vw, 2.5rem);
   border-bottom: 1px solid var(--rule);
+  background: rgba(250, 243, 232, 0.92);
+  backdrop-filter: saturate(160%) blur(8px);
+  -webkit-backdrop-filter: saturate(160%) blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-.masthead .wordmark {
+.topnav__brand {
   font-family: var(--serif);
-  font-style: normal;
   font-variation-settings: "opsz" 144, "SOFT" 60;
   font-weight: 500;
-  font-size: clamp(1.4rem, 2.6vw, 1.95rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.04em;
   color: var(--ink);
   text-decoration: none;
+  white-space: nowrap;
 }
-.masthead .wordmark .visibility { font-style: italic; font-weight: 400; letter-spacing: 0.05em; }
-.masthead .ornament {
-  margin: 0.6rem auto 0.9rem;
-  width: 2.5rem;
-  height: 1px;
-  background: var(--brass);
-  position: relative;
-}
-.masthead .ornament::before,
-.masthead .ornament::after {
-  content: "·";
-  color: var(--brass);
-  position: absolute;
-  top: -0.7rem;
-  font-size: 1rem;
-}
-.masthead .ornament::before { left: -0.7rem; }
-.masthead .ornament::after { right: -0.7rem; }
-.masthead .tagline {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 0.92rem;
-  letter-spacing: 0.02em;
-  color: var(--gray);
-}
-.masthead nav {
-  margin-top: 1.25rem;
+.topnav__brand .visibility { font-style: italic; font-weight: 400; }
+.topnav__brand:hover { color: var(--rose-deep); }
+.topnav__links {
   display: flex;
-  justify-content: center;
-  gap: 1.75rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.1rem, 2.4vw, 2rem);
 }
-.masthead nav a {
+.topnav__links > a {
   font-family: var(--sans);
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
   text-decoration: none;
   color: var(--ink-soft);
 }
-.masthead nav a:hover { color: var(--rose-deep); }
+.topnav__links > a:hover { color: var(--rose-deep); }
+.topnav__links > a.btn { color: var(--paper); }
+.topnav__links > a.btn:hover { color: var(--paper); }
+@media (max-width: 720px) {
+  .topnav__links { gap: 1rem; }
+  .topnav__links > a:not(.btn) { display: none; }
+}
+
+/* small button variant — used in topnav CTA */
+.btn--small {
+  padding: 0.5rem 1.05rem;
+  font-size: 0.85rem;
+}
 
 /* ─── layout primitives ──────────────────────────────────────────── */
 .frame {
@@ -447,6 +443,91 @@ em { font-style: italic; }
 .arc-item p { font-size: 0.94rem; color: var(--ink-soft); }
 @media (max-width: 640px) {
   .arc { grid-template-columns: 1fr; }
+}
+
+/* §06 close — extra breathing room before footer */
+#close { padding-bottom: clamp(6rem, 12vh, 9rem); }
+
+/* /services — three-step audit flow */
+.steps { margin-top: 2.5rem; }
+.step {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--rule);
+}
+.step:first-child { border-top: none; padding-top: 0; }
+.step__num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 90, "WONK" 1;
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  line-height: 0.95;
+  color: var(--rose-deep);
+}
+.step h3 {
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+.step p { color: var(--ink-soft); }
+@media (max-width: 640px) {
+  .step { grid-template-columns: 1fr; gap: 0.6rem; }
+}
+
+/* /services — service overview list (italic key + body) */
+.service-includes {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 1.75rem;
+  display: grid;
+  gap: 0.6rem;
+}
+.service-includes li {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  padding-left: 1.4rem;
+  position: relative;
+}
+.service-includes li::before {
+  content: "❦";
+  color: var(--rose);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-size: 0.85rem;
+}
+
+/* /check page — iframe wrapper */
+.check-wrap {
+  max-width: 1100px;
+  margin: 2.5rem auto 0;
+  padding: 0 var(--gutter);
+}
+.check-frame {
+  width: 100%;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  box-shadow:
+    0 30px 60px -30px rgba(26, 44, 79, 0.25),
+    0 8px 18px -8px rgba(26, 44, 79, 0.12);
+}
+.check-frame iframe {
+  display: block;
+  width: 100%;
+  height: clamp(640px, 85vh, 1100px);
+  border: 0;
+  background: var(--paper);
+}
+.check-fallback {
+  margin-top: 1rem;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--gray);
 }
 
 /* footer / colophon */

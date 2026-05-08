@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro";
+
+// ─── iframe source ──────────────────────────────────────────────────
+// Currently points to the existing tool on Abby's Squarespace site.
+// AT DNS CUTOVER: this site will become ctpvisibility.com, so the
+// /dooropener path here will collide with the new site root. Move
+// the tool to a subdomain (e.g. tool.ctpvisibility.com) or a third-
+// party host before flipping DNS, then update this src.
+// ─────────────────────────────────────────────────────────────────────
+const toolUrl = "https://ctpvisibility.com/dooropener";
+---
+
+<Base
+  title="The Visibility Check — CTP Visibility Advisors"
+  description="A free check that surfaces how AI interprets, retrieves, trusts, and protects your brand. No email gate, no lead form."
+>
+
+  <!-- ─── intro ─────────────────────────────────────────────────── -->
+  <section class="hero frame">
+    <div class="preface">— A free visibility audit —</div>
+    <h1>See how AI sees <span class="accent">your brand</span>.</h1>
+    <p class="subhead">
+      No email gate. No lead form. Run it on your own brand or a competitor's.
+    </p>
+  </section>
+
+  <!-- ─── the tool itself ───────────────────────────────────────── -->
+  <div class="check-wrap">
+    <div class="check-frame">
+      <iframe
+        src={toolUrl}
+        title="AI Visibility check tool"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    <p class="check-fallback">
+      Tool not loading? <a href={toolUrl} target="_blank" rel="noopener">Open it in a new tab.</a>
+    </p>
+  </div>
+
+  <!-- ─── what to do with results ────────────────────────────────── -->
+  <section class="frame" id="next" style="padding-top: clamp(4rem, 7vh, 6rem);">
+    <div class="chapter"><span class="num">After the check</span> What to do with the results.</div>
+    <h2>The check is the easy part.</h2>
+    <p class="lede">
+      Most reports surface three or four things you can fix this quarter
+      and one or two that need a real strategic call. The fastest way to
+      sort which is which is a short conversation.
+    </p>
+    <div class="cta-row" style="justify-content: flex-start;">
+      <a class="btn" href="/#close">Talk through your results</a>
+      <a class="btn btn--ghost" href="/">Back to home</a>
+    </div>
+  </section>
+
+</Base>

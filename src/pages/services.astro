@@ -1,0 +1,192 @@
+---
+import Base from "../layouts/Base.astro";
+import ChapterBreak from "../components/ChapterBreak.astro";
+
+// ─── copy provenance key ────────────────────────────────────────────
+// LIFTED  = pulled from ctpvisibility.com/services
+// DRAFTED = written from positioning context for Abby to revise
+// Note: "For Local Businesses" segment from current site is dropped
+// per brainstorm (audience scope is agencies + brand-direct only).
+// ─────────────────────────────────────────────────────────────────────
+
+const auditSteps = [
+  {
+    num: "I",
+    name: "Brief",
+    body:
+      "Together, we outline the information needed to evaluate your brand's current visibility, accuracy, and retrievability across major large language models. This isn't busywork or skippable — it's the foundation of how AI systems understand, rank, and surface your brand.",
+  },
+  {
+    num: "II",
+    name: "Benchmark",
+    body:
+      "We capture a snapshot of LLM visibility, associations, gaps, and retrievability. Using a cohesive framework, we compare your visibility footprint to peers to surface relative strengths, topic ownership, blindspots, and opportunities to correct inaccuracies.",
+  },
+  {
+    num: "III",
+    name: "Begin",
+    body:
+      "You receive an executive summary outlining top strengths, gaps, and an overall share-of-model score. We outline short-term wins, in case you'd like to begin closing identified gaps immediately.",
+  },
+];
+
+const auditQuestions = [
+  "How visible are you across top-tier LLMs?",
+  "What about your top competitors?",
+  "What do the models think you're known for?",
+  "Where does your visibility break down?",
+  "Where are the openings to strengthen?",
+];
+---
+
+<Base
+  title="Services — CTP Visibility Advisors"
+  description="Three levels of support: visibility diagnostics, ongoing optimization, and embedded training. Executive-ready audits with a share-of-model benchmark."
+>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero frame">
+    <div class="preface">— Three levels of support —</div>
+    <h1>Services that meet you <span class="accent">where you are</span>.</h1>
+    <p class="subhead">
+      A diagnostic for clarity. Ongoing support for momentum. Embedded
+      training when your team wants to own it themselves.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="#audit">See the audit process</a>
+      <a class="btn btn--ghost" href="/#close">Book a free call</a>
+    </div>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §I AUDITS  [LIFTED + reordered] ──────────────────────── -->
+  <section class="frame" id="audit">
+    <div class="chapter"><span class="num">Service I</span> Diagnostics.</div>
+    <h2>AI Visibility Audit.</h2>
+    <p class="lede">
+      Need an understanding of your brand's visibility today, plus a few
+      short-term wins? An executive-ready gap analysis surfaces strengths,
+      threats, and opportunities — with a benchmark share-of-model score
+      and a roadmap for what to do next.
+    </p>
+    <p>
+      The offer is refined to be extremely low-lift on your end. The
+      stakes are high and time is tight; the audit doesn't add to the pile.
+    </p>
+
+    <div class="steps">
+      {auditSteps.map((s) => (
+        <div class="step">
+          <div class="step__num">{s.num}.</div>
+          <div>
+            <h3>{s.name}</h3>
+            <p>{s.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="pullquote">
+      Three steps. Built for over-burdened professionals.
+    </p>
+
+    <h3 style="margin-top: 2.5rem;">After the audit, you can answer:</h3>
+    <ul class="service-includes">
+      {auditQuestions.map((q) => (
+        <li>{q}</li>
+      ))}
+    </ul>
+
+    <div class="cta-row">
+      <a class="btn" href="/#close">Book a free call</a>
+      <a class="btn btn--ghost" href="/check">Run the free check first</a>
+    </div>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §II ONGOING SUPPORT  [LIFTED] ────────────────────────── -->
+  <section class="frame" id="ongoing">
+    <div class="chapter"><span class="num">Service II</span> Ongoing support.</div>
+    <h2>AI recommendations change constantly.</h2>
+    <p class="lede">
+      After the audit comes the maintenance. Monthly AI recommendation
+      tracking. Competitor visibility. Review monitoring. Ongoing
+      optimization. Quarterly reports.
+    </p>
+    <p>
+      The point is to keep you front-and-center as the models, the
+      sources, and the conversation around your category keep shifting.
+    </p>
+
+    <ul class="service-includes">
+      <li>Monthly AI recommendation tracking across major LLMs</li>
+      <li>Competitor visibility and topic-ownership monitoring</li>
+      <li>Review monitoring across the surfaces models are reading</li>
+      <li>Ongoing optimization of the assets that feed retrievability</li>
+      <li>Quarterly reports written for the executive who has six minutes</li>
+    </ul>
+
+    <div class="cta-row">
+      <a class="btn btn--ghost" href="/#close">Talk about ongoing support</a>
+    </div>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §III EMBEDDED  [LIFTED + DRAFTED expansion] ──────────── -->
+  <section class="frame" id="embedded">
+    <div class="chapter"><span class="num">Service III</span> Embedded training.</div>
+    <h2>Teach a team to fish.</h2>
+    <p class="lede">
+      For organizations that don't want to outsource AI visibility work.
+      Technical training for the team that's already inside the building,
+      delivered by someone who's been doing the practitioner work for
+      twenty-five years.
+    </p>
+    <p>
+      Topics include AI visibility governance, narrative protection,
+      competitive displacement, and confident messaging — all delivered
+      in a wholly human manner, applying the <em>Super Human</em>
+      framework. Your team deserves to understand this work and feel
+      good about doing it.
+    </p>
+
+    <ul class="service-includes">
+      <li>AI visibility governance for marketing and comms teams</li>
+      <li>Narrative protection workshops for leadership</li>
+      <li>Competitive displacement playbooks scoped to your category</li>
+      <li>Confident messaging workshops for the people who actually write</li>
+      <li>Custom curriculum for franchise systems and multi-location brands</li>
+    </ul>
+
+    <div class="cta-row">
+      <a class="btn btn--ghost" href="/#close">Bring this in-house</a>
+    </div>
+
+    <p class="note">
+      Embedded scope and curriculum drafted from positioning. Final menu is the founder's call.
+    </p>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── CLOSE  [DRAFTED — gentle CTA, mirrors homepage §06] ──── -->
+  <section class="frame" id="close" style="padding-bottom: clamp(6rem, 12vh, 9rem);">
+    <div class="chapter"><span class="num">Next</span> Start with a call.</div>
+    <h2>The first conversation is free.</h2>
+    <p class="lede">
+      Twenty minutes is enough to figure out which of the three services
+      makes sense for your situation, or whether the right next step is
+      something else entirely.
+    </p>
+    <div class="cta-row" style="justify-content: flex-start;">
+      <a class="btn" href="mailto:abby.lovett@ctpvisibility.com?subject=Services%20conversation">
+        abby.lovett@ctpvisibility.com
+      </a>
+      <a class="btn btn--ghost" href="/">Back to home</a>
+    </div>
+  </section>
+
+</Base>

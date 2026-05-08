@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import Base from "../layouts/Base.astro";
 import ChapterBreak from "../components/ChapterBreak.astro";
 
 // ─── copy provenance key ────────────────────────────────────────────
@@ -14,280 +14,235 @@ const pillars = [
   { num: "III", name: "Authority",       gloss: "Whether models trust your expertise." }, // LIFTED
   { num: "IV",  name: "Defensibility",   gloss: "How protected you are from distortion." }, // LIFTED
 ];
+
+const amazonUrl = "https://www.amazon.com/Super-Human-SMALL-Ways-While/dp/B0GX1F931T";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CTP Visibility Advisors — Reputation built for an AI-mediated world</title>
-    <meta
-      name="description"
-      content="AI didn't invent brand visibility. The substrate changed; the discipline didn't. Strategic reputation work for an AI-mediated world."
-    />
-  </head>
-  <body>
+<Base
+  title="CTP Visibility Advisors — Reputation built for an AI-mediated world"
+  description="AI didn't invent brand visibility. The substrate changed; the discipline didn't. Strategic reputation work for an AI-mediated world."
+>
 
-    <!-- ─── masthead (centered, magazine-style) ───────────────────── -->
-    <header class="masthead">
-      <a class="wordmark" href="/">
-        CTP <span class="visibility">Visibility</span> Advisors
+  <!-- ─── §00 HERO  [LIFTED hero line + subhead] ────────────────── -->
+  <section class="hero frame">
+    <div class="preface">— Notes on reputation, in the AI era —</div>
+    <h1>
+      Building reputations <span class="accent">AI and humans</span> recognize instantly.
+    </h1>
+    <p class="subhead">
+      Your brand is already being processed by AI. Make sure you get the reputation you've earned.
+    </p>
+    <div class="cta-row">
+      <a class="btn" href="/check">See how AI sees your brand</a>
+      <a class="btn btn--ghost" href="#doors">Ways to work together</a>
+    </div>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §01 THE PREMISE  [DRAFTED — substrate-changed reframe] ── -->
+  <section class="frame" id="premise">
+    <div class="chapter"><span class="num">Chapter I</span> A premise.</div>
+    <h2>None of this was invented in 2025.</h2>
+    <p class="lede">
+      Brand reputation, the discipline, is decades old. Getting interpreted
+      accurately. Surfaced in the right rooms. Trusted by gatekeepers.
+      Protected from competitors trying to rewrite your story. That craft
+      existed long before language models had an opinion about you.
+    </p>
+    <p>
+      What changed is the substrate. The rooms got bigger. The gatekeepers
+      got faster. One of those gatekeepers is now a model that has read
+      everything ever written about you in the time it takes to refill
+      your coffee.
+    </p>
+    <p class="pullquote">
+      The substrate changed. The discipline didn't.
+    </p>
+    <p>
+      That's the lens behind the work here. Not a new playbook bolted on
+      top of panic. The same craft you'd want anyway, applied to systems
+      that now talk about you whether you like it or not.
+    </p>
+    <p class="note">
+      Section drafted from positioning. To be revised in the founder's voice.
+    </p>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §02 FOUR PILLARS  [LIFTED — schema FAQ-friendly] ──────── -->
+  <section class="frame" id="pillars">
+    <div class="chapter"><span class="num">Chapter II</span> What's actually happening.</div>
+    <h2>AI visibility, in four parts.</h2>
+    <p class="lede">
+      The work breaks down into four dimensions. Each one is measurable.
+      Each one is fixable. None of them get fixed by writing more blog posts.
+    </p>
+
+    <dl class="pillars" itemscope itemtype="https://schema.org/FAQPage">
+      {pillars.map((p) => (
+        <div class="pillar" itemscope itemtype="https://schema.org/Question">
+          <dt itemprop="name">
+            <span class="num">{p.num}</span>
+            {p.name}
+          </dt>
+          <dd itemscope itemtype="https://schema.org/Answer">
+            <p itemprop="text">{p.gloss}</p>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §03 ABOUT  [LIFTED bio, DRAFTED arc framing] ──────────── -->
+  <section class="frame" id="about">
+    <div class="chapter"><span class="num">Chapter III</span> Behind the practice.</div>
+    <h2>A note on the founder.</h2>
+    <p class="lede">
+      CTP Visibility Advisors is led by Abby Lovett, who brings 25+ years
+      of experience protecting and promoting world-class brands across
+      Fortune 100 companies, bold disruptors, and franchise systems.
+    </p>
+    <p>
+      Strategic marketing communications, reputation building, integrated
+      brand solutions. She works with clients and colleagues who are
+      like-minded, professionally generous, and operate with integrity —
+      and she has a deep commitment to paying it forward.
+    </p>
+
+    <div class="arc">
+      <div class="arc-item">
+        <div class="role"><span class="num">i</span> Operator</div>
+        <p>Two and a half decades inside the rooms where reputation is actually decided — Fortune 100, disruptors, franchise systems.</p>
+      </div>
+      <div class="arc-item">
+        <div class="role"><span class="num">ii</span> Author</div>
+        <p><em>Super Human</em> — a plain-spoken, research-backed roadmap for thriving at work amid the noise. Out 2026.</p>
+      </div>
+      <div class="arc-item">
+        <div class="role"><span class="num">iii</span> Practice</div>
+        <p>CTP Visibility Advisors. Audits, strategy, and ongoing monitoring for organizations that want to be interpreted accurately.</p>
+      </div>
+    </div>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §04 TWO DOORS  [DRAFTED — markup-gap positioning] ─────── -->
+  <section id="doors">
+    <div class="frame">
+      <div class="chapter"><span class="num">Chapter IV</span> Two ways in.</div>
+      <h2>Two doors. The same craft.</h2>
+      <p class="lede">
+        Most engagements come through one of two paths. Both get the same
+        care. Neither involves keyword stuffing, fly-by-night tools, or
+        anything that would make you uncomfortable saying out loud.
+      </p>
+    </div>
+
+    <div class="doors-split">
+
+      <article class="door door--agencies">
+        <div class="door-inner">
+          <div class="who">For agencies & comms partners</div>
+          <h3>White-label visibility audits and strategic build-outs.</h3>
+          <p class="what">
+            You already own the client relationship. We sit underneath,
+            doing the specialized work that doesn't fit inside a retainer
+            designed for press, social, or paid. You keep the front of the room.
+          </p>
+          <ul class="includes">
+            <li>AI visibility audit, full four-pillar</li>
+            <li>Strategic plan, scoped to the client's category</li>
+            <li>Quarterly monitoring and competitor watch</li>
+            <li>Co-branded or fully white-labeled deliverables</li>
+          </ul>
+          <a class="btn btn--ghost" href="#close">Start a partnership conversation</a>
+        </div>
+      </article>
+
+      <article class="door door--brands">
+        <div class="door-inner">
+          <div class="who">For franchise systems & brand owners</div>
+          <h3>Productized engagements, direct.</h3>
+          <p class="what">
+            For founders and franchise leaders who want the work done without
+            a middle layer. Tiered packages with clear scope. Every paid
+            engagement includes a copy of <em>Super Human</em>.
+          </p>
+          <ul class="includes">
+            <li>Tier I — Visibility audit and 90-day plan</li>
+            <li>Tier II — Audit, plan, and quarterly monitoring</li>
+            <li>Tier III — Embedded advisory across a calendar year</li>
+            <li>Custom — for franchise systems with multi-location footprints</li>
+          </ul>
+          <a class="btn btn--ghost" href="#close">Talk about your brand</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="frame">
+      <p class="note">
+        Tier names and scope drafted as placeholders. Final SKU language is the founder's call.
+      </p>
+    </div>
+  </section>
+
+  <ChapterBreak />
+
+  <!-- ─── §05 BOOK  [LIFTED title + premise, DRAFTED framing] ───── -->
+  <section class="frame" id="book">
+    <div class="chapter"><span class="num">Chapter V</span> The book.</div>
+    <h2>Super Human.</h2>
+
+    <div class="book-module">
+      <a class="book-cover" href={amazonUrl} target="_blank" rel="noopener" aria-label="Super Human by Abby Lovett — open on Amazon">
+        <img
+          src="https://m.media-amazon.com/images/I/51-PLdl8D9L._SY522_.jpg"
+          alt="Super Human — book cover. Heart-with-cape mark on a navy field."
+          loading="lazy"
+          width="345"
+          height="522"
+        />
       </a>
-      <div class="ornament" aria-hidden="true"></div>
-      <div class="tagline">Reputations built for an AI-mediated world.</div>
-      <nav>
-        <a href="#premise">The premise</a>
-        <a href="#pillars">The work</a>
-        <a href="#about">About</a>
-        <a href="#doors">Engagements</a>
-        <a href="#book">Book</a>
-        <a href="#close">Talk</a>
-      </nav>
-    </header>
 
-    <main>
-
-      <!-- ─── §00 HERO  [LIFTED hero line + subhead] ──────────────── -->
-      <section class="hero frame">
-        <div class="preface">— Notes on reputation, in the AI era —</div>
-        <h1>
-          Building reputations <span class="accent">AI and humans</span> recognize instantly.
-        </h1>
-        <p class="subhead">
-          Your brand is already being processed by AI. Make sure you get the reputation you've earned.
+      <div>
+        <p class="lede">
+          <em>Super Human: 8 "SMALL" ways to be super at what you do … and human while you do it.</em>
+        </p>
+        <p>
+          A plain-spoken, research-backed roadmap for thriving at work amid
+          all the noise. The same lens that grounds the client work. Every
+          paid engagement ships with a copy.
         </p>
         <div class="cta-row">
-          <a class="btn" href="/check">See how AI sees your brand</a>
-          <a class="btn btn--ghost" href="#doors">Ways to work together</a>
+          <a class="btn" href={amazonUrl} target="_blank" rel="noopener">Read on Amazon</a>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <ChapterBreak />
+  <ChapterBreak />
 
-      <!-- ─── §01 THE PREMISE  [DRAFTED — substrate-changed reframe] -->
-      <section class="frame" id="premise">
-        <div class="chapter"><span class="num">Chapter I</span> A premise.</div>
-        <h2>None of this was invented in 2025.</h2>
-        <p class="lede">
-          Brand reputation, the discipline, is decades old. Getting interpreted
-          accurately. Surfaced in the right rooms. Trusted by gatekeepers.
-          Protected from competitors trying to rewrite your story. That craft
-          existed long before language models had an opinion about you.
-        </p>
-        <p>
-          What changed is the substrate. The rooms got bigger. The gatekeepers
-          got faster. One of those gatekeepers is now a model that has read
-          everything ever written about you in the time it takes to refill
-          your coffee.
-        </p>
-        <p class="pullquote">
-          The substrate changed. The discipline didn't.
-        </p>
-        <p>
-          That's the lens behind the work here. Not a new playbook bolted on
-          top of panic. The same craft you'd want anyway, applied to systems
-          that now talk about you whether you like it or not.
-        </p>
-        <p class="note">
-          Section drafted from positioning. To be revised in the founder's voice.
-        </p>
-      </section>
+  <!-- ─── §06 CLOSE  [DRAFTED — gentle closing CTA] ─────────────── -->
+  <section class="frame" id="close">
+    <div class="chapter"><span class="num">Chapter VI</span> Let's talk.</div>
+    <h2>Tell us what's actually happening with your brand.</h2>
+    <p class="lede">
+      The fastest way to start is a short note. Whether you're an agency
+      partner or a brand owner. What's prompting the conversation. Where
+      you'd like to be six months from now.
+    </p>
+    <div class="cta-row" style="justify-content: flex-start;">
+      <a class="btn" href="mailto:abby.lovett@ctpvisibility.com?subject=Visibility%20conversation">
+        abby.lovett@ctpvisibility.com
+      </a>
+      <a class="btn btn--ghost" href="/check">Or run the free check first</a>
+    </div>
+  </section>
 
-      <ChapterBreak />
-
-      <!-- ─── §02 FOUR PILLARS  [LIFTED — schema FAQ-friendly] ────── -->
-      <section class="frame" id="pillars">
-        <div class="chapter"><span class="num">Chapter II</span> What's actually happening.</div>
-        <h2>AI visibility, in four parts.</h2>
-        <p class="lede">
-          The work breaks down into four dimensions. Each one is measurable.
-          Each one is fixable. None of them get fixed by writing more blog posts.
-        </p>
-
-        <dl class="pillars" itemscope itemtype="https://schema.org/FAQPage">
-          {pillars.map((p) => (
-            <div class="pillar" itemscope itemtype="https://schema.org/Question">
-              <dt itemprop="name">
-                <span class="num">{p.num}</span>
-                {p.name}
-              </dt>
-              <dd itemscope itemtype="https://schema.org/Answer">
-                <p itemprop="text">{p.gloss}</p>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <ChapterBreak />
-
-      <!-- ─── §03 ABOUT  [LIFTED bio, DRAFTED arc framing] ────────── -->
-      <section class="frame" id="about">
-        <div class="chapter"><span class="num">Chapter III</span> Behind the practice.</div>
-        <h2>A note on the founder.</h2>
-        <p class="lede">
-          CTP Visibility Advisors is led by Abby Lovett, who brings 25+ years
-          of experience protecting and promoting world-class brands across
-          Fortune 100 companies, bold disruptors, and franchise systems.
-        </p>
-        <p>
-          Strategic marketing communications, reputation building, integrated
-          brand solutions. She works with clients and colleagues who are
-          like-minded, professionally generous, and operate with integrity —
-          and she has a deep commitment to paying it forward.
-        </p>
-
-        <div class="arc">
-          <div class="arc-item">
-            <div class="role"><span class="num">i</span> Operator</div>
-            <p>Two and a half decades inside the rooms where reputation is actually decided — Fortune 100, disruptors, franchise systems.</p>
-          </div>
-          <div class="arc-item">
-            <div class="role"><span class="num">ii</span> Author</div>
-            <p><em>Super Human</em> — a plain-spoken, research-backed roadmap for thriving at work amid the noise. Out 2026.</p>
-          </div>
-          <div class="arc-item">
-            <div class="role"><span class="num">iii</span> Practice</div>
-            <p>CTP Visibility Advisors. Audits, strategy, and ongoing monitoring for organizations that want to be interpreted accurately.</p>
-          </div>
-        </div>
-      </section>
-
-      <ChapterBreak />
-
-      <!-- ─── §04 TWO DOORS  [DRAFTED — markup-gap positioning] ───── -->
-      <section id="doors">
-        <div class="frame">
-          <div class="chapter"><span class="num">Chapter IV</span> Two ways in.</div>
-          <h2>Two doors. The same craft.</h2>
-          <p class="lede">
-            Most engagements come through one of two paths. Both get the same
-            care. Neither involves keyword stuffing, fly-by-night tools, or
-            anything that would make you uncomfortable saying out loud.
-          </p>
-        </div>
-
-        <div class="doors-split">
-
-          <article class="door door--agencies">
-            <div class="door-inner">
-              <div class="who">For agencies & comms partners</div>
-              <h3>White-label visibility audits and strategic build-outs.</h3>
-              <p class="what">
-                You already own the client relationship. We sit underneath,
-                doing the specialized work that doesn't fit inside a retainer
-                designed for press, social, or paid. You keep the front of the room.
-              </p>
-              <ul class="includes">
-                <li>AI visibility audit, full four-pillar</li>
-                <li>Strategic plan, scoped to the client's category</li>
-                <li>Quarterly monitoring and competitor watch</li>
-                <li>Co-branded or fully white-labeled deliverables</li>
-              </ul>
-              <a class="btn btn--ghost" href="#close">Start a partnership conversation</a>
-            </div>
-          </article>
-
-          <article class="door door--brands">
-            <div class="door-inner">
-              <div class="who">For franchise systems & brand owners</div>
-              <h3>Productized engagements, direct.</h3>
-              <p class="what">
-                For founders and franchise leaders who want the work done without
-                a middle layer. Tiered packages with clear scope. Every paid
-                engagement includes a copy of <em>Super Human</em>.
-              </p>
-              <ul class="includes">
-                <li>Tier I — Visibility audit and 90-day plan</li>
-                <li>Tier II — Audit, plan, and quarterly monitoring</li>
-                <li>Tier III — Embedded advisory across a calendar year</li>
-                <li>Custom — for franchise systems with multi-location footprints</li>
-              </ul>
-              <a class="btn btn--ghost" href="#close">Talk about your brand</a>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="frame">
-          <p class="note">
-            Tier names and scope drafted as placeholders. Final SKU language is the founder's call.
-          </p>
-        </div>
-      </section>
-
-      <ChapterBreak />
-
-      <!-- ─── §05 BOOK  [LIFTED title + premise, DRAFTED framing] ─── -->
-      <section class="frame" id="book">
-        <div class="chapter"><span class="num">Chapter V</span> The book.</div>
-        <h2>Super Human.</h2>
-
-        <div class="book-module">
-          <a class="book-cover" href="#close" aria-label="Super Human by Abby Lovett, forthcoming 2026">
-            <img
-              src="https://m.media-amazon.com/images/I/51-PLdl8D9L._SY522_.jpg"
-              alt="Super Human — book cover. Heart-with-cape mark on a navy field."
-              loading="lazy"
-              width="345"
-              height="522"
-            />
-          </a>
-
-          <div>
-            <p class="lede">
-              <em>Super Human: 8 "SMALL" ways to be super at what you do … and human while you do it.</em>
-            </p>
-            <p>
-              A plain-spoken, research-backed roadmap for thriving at work amid
-              all the noise. The same lens that grounds the client work. Every
-              paid engagement ships with a copy.
-            </p>
-            <p>
-              Available 2026. Pre-order list opens closer to publication.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <ChapterBreak />
-
-      <!-- ─── §06 CLOSE  [DRAFTED — gentle closing CTA] ───────────── -->
-      <section class="frame" id="close">
-        <div class="chapter"><span class="num">Chapter VI</span> Let's talk.</div>
-        <h2>Tell us what's actually happening with your brand.</h2>
-        <p class="lede">
-          The fastest way to start is a short note. Whether you're an agency
-          partner or a brand owner. What's prompting the conversation. Where
-          you'd like to be six months from now.
-        </p>
-        <div class="cta-row" style="justify-content: flex-start;">
-          <a class="btn" href="mailto:abby.lovett@ctpvisibility.com?subject=Visibility%20conversation">
-            abby.lovett@ctpvisibility.com
-          </a>
-          <a class="btn btn--ghost" href="/check">Or run the free check first</a>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- ─── §07 COLOPHON ─────────────────────────────────────────── -->
-    <footer class="colophon">
-      <p>
-        This site was built to be read by humans, AI assistants,
-        <span class="heart">♥</span> and Abby's mom.
-      </p>
-      <p class="meta">
-        <a href="/llms.txt">llms.txt</a>
-        &nbsp;·&nbsp;
-        <a href="/sitemap.xml">sitemap</a>
-        &nbsp;·&nbsp;
-        Chicago, IL
-        &nbsp;·&nbsp;
-        © 2026 CTP Visibility Advisors
-      </p>
-    </footer>
-
-  </body>
-</html>
+</Base>
